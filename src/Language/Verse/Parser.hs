@@ -33,10 +33,16 @@ block :: Parser Block
 block = paragraph <* many (void newline)
 
 paragraph :: Parser Block
-paragraph = undefined
+paragraph = Paragraph <$> manyTill inline (void newline <|> eof)
 
 inline :: Parser Inline
 inline = content
 
 content :: Parser Inline
-content = undefined
+content = Content <$> text
+
+text :: Parser String
+text = manyTill (noneOf reservedC) (void newline <|> eof)
+
+reservedC :: String
+reservedC = ""
