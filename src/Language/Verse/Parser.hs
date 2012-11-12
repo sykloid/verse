@@ -12,9 +12,12 @@ module Language.Verse.Parser (
     content,
 ) where
 
+import Control.Applicative
 import Control.Monad.Identity
 
 import Text.Parsec (ParsecT, SourceName, ParseError, runParserT)
+import Text.Parsec.Combinator
+import Text.Parsec.Char
 
 import Language.Verse.AST
 
@@ -24,16 +27,16 @@ runParser :: Parser a -> SourceName -> String -> Either ParseError a
 runParser p s i = runIdentity $ runParserT p () s i
 
 document :: Parser Document
-document = undefined
+document = Document <$> manyTill block eof
 
 block :: Parser Block
-block = undefined
+block = paragraph <* many (void newline)
 
 paragraph :: Parser Block
 paragraph = undefined
 
 inline :: Parser Inline
-inline = undefined
+inline = content
 
 content :: Parser Inline
 content = undefined
