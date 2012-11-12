@@ -23,7 +23,10 @@ library
         src
 
     exposed-modules:
-        Language.Verse.AST
+        Language.Verse.AST,
+        Language.Verse.Parser
 
     build-depends:
-        base
+        base,
+        mtl,
+        parsec
