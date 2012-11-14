@@ -33,7 +33,11 @@ block :: Parser Block
 block = paragraph <* many (void newline)
 
 paragraph :: Parser Block
-paragraph = Paragraph <$> manyTill inline (void newline <|> eof)
+paragraph = Paragraph . foldr condense [] <$> manyTill inline (void newline <|> eof)
+  where
+    condense :: Inline -> [Inline] -> [Inline]
+    condense (Content c) (Content c' : inlines) = Content (c ++ " " ++ c') : inlines
+    condense x xs = x:xs
 
 inline :: Parser Inline
 inline = content
