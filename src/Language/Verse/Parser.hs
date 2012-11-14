@@ -18,6 +18,7 @@ import Control.Monad.Identity
 import Text.Parsec (ParsecT, SourceName, ParseError, runParserT)
 import Text.Parsec.Combinator
 import Text.Parsec.Char
+import Text.Parsec.Prim (try)
 
 import Language.Verse.AST
 
@@ -40,13 +41,16 @@ paragraph = Paragraph . foldr condense [] <$> manyTill inline (void newline <|> 
     condense x xs = x:xs
 
 inline :: Parser Inline
-inline = content
+inline = transform <|> content
 
 content :: Parser Inline
 content = Content <$> text
 
+transform :: Parser Inline
+transform = between (char '{') (char '}') $ Transform <$> (unwords <$> manyTill text (char '|')) <*> text
+
 text :: Parser String
-text = manyTill (noneOf reservedC) (void newline <|> eof)
+text = manyTill anyChar (void (lookAhead $ oneOf reservedC) <|> void newline <|> eof)
 
 reservedC :: String
-reservedC = ""
+reservedC = "{|}"

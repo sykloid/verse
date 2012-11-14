@@ -19,4 +19,5 @@ data Block
 -- occur side-by-side inside a block-level element.
 data Inline
     = Content String -- ^ A non-marked-up piece of text.
+    | Transform String String -- ^ A transformed piece of text, with the transformation name.
   deriving (Eq, Read, Show)
