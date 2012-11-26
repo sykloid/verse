@@ -56,7 +56,15 @@ case_content_newlineTerminated =
 
 case_content_reservedTerminated :: Assertion
 case_content_reservedTerminated =
-    runParser content "case_reservedTerminated" "xxx|" @=? Right (Content "xxx")
+    runParser content "case_content_reservedTerminated" "xxx|" @?= Right (Content "xxx")
+
+case_transform_basic :: Assertion
+case_transform_basic =
+    runParser transform "case_transform_basic" "{xxx|zzz}" @?= Right (Transform "xxx" "zzz")
+
+case_transform_textNewlineSkipped :: Assertion
+case_transform_textNewlineSkipped =
+    runParser transform "case_transform_textNewlineSkipped" "{xxx\nyyy|zzz}" @?= Right (Transform "xxx yyy" "zzz")
 
 tests :: [Test]
 tests = [
@@ -78,6 +86,10 @@ tests = [
                         testCase "Basic Content" case_content_basic,
                         testCase "Newline Terminated Content" case_content_newlineTerminated,
                         testCase "Reserved-Character Terminated Content" case_content_reservedTerminated
+                    ],
+                testGroup "Transform" [
+                        testCase "Basic Transform" case_transform_basic,
+                        testCase "Text-Newline Skipped Transform" case_transform_textNewlineSkipped
                     ]
             ]
     ]
