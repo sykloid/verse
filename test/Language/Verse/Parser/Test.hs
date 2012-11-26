@@ -19,40 +19,40 @@ instance Eq ParseError where
 
 case_document_singleBlock :: Assertion
 case_document_singleBlock =
-    runParser document "case_document_singleBlock" "xxx" @=? Right (Document [Paragraph [Content "xxx"]])
+    runParser document "case_document_singleBlock" "xxx" @?= Right (Document [Paragraph [Content "xxx"]])
 
 case_document_multiBlock :: Assertion
 case_document_multiBlock =
-    runParser document "case_document_multiBlock" "xxx\n\nyyy" @=?
+    runParser document "case_document_multiBlock" "xxx\n\nyyy" @?=
         Right (Document [Paragraph [Content "xxx"], Paragraph [Content "yyy"]])
 
 case_document_blankTerminated :: Assertion
 case_document_blankTerminated =
-    runParser document "case_document_blankTerminated" "xxx\n\n" @=?
+    runParser document "case_document_blankTerminated" "xxx\n\n" @?=
         Right (Document [Paragraph [Content "xxx"]])
 
 case_paragraph_basic :: Assertion
 case_paragraph_basic =
-    runParser paragraph "case_paragraph_basic" "xxx" @=? Right (Paragraph [Content "xxx"])
+    runParser paragraph "case_paragraph_basic" "xxx" @?= Right (Paragraph [Content "xxx"])
 
 case_paragraph_linebreakSeparated :: Assertion
 case_paragraph_linebreakSeparated =
-    runParser paragraph "case_paragraph_linebreakSeparated" "xxx\nyyy" @=? Right (Paragraph [Content "xxx yyy"])
+    runParser paragraph "case_paragraph_linebreakSeparated" "xxx\nyyy" @?= Right (Paragraph [Content "xxx yyy"])
 
 case_paragraph_linebreakTerminated :: Assertion
 case_paragraph_linebreakTerminated =
-    runParser paragraph "case_paragraph_linebreakTerminated" "xxx\nyyy\n" @=? Right (Paragraph [Content "xxx yyy"])
+    runParser paragraph "case_paragraph_linebreakTerminated" "xxx\nyyy\n" @?= Right (Paragraph [Content "xxx yyy"])
 
 case_paragraph_blankTerminated :: Assertion
 case_paragraph_blankTerminated =
-    runParser paragraph "case_paragraph_blankTerminated" "xxx\n\nyyy" @=? Right (Paragraph [Content "xxx"])
+    runParser paragraph "case_paragraph_blankTerminated" "xxx\n\nyyy" @?= Right (Paragraph [Content "xxx"])
 
 case_content_basic :: Assertion
-case_content_basic = runParser content "case_content_basic" "xxx" @=? Right (Content "xxx")
+case_content_basic = runParser content "case_content_basic" "xxx" @?= Right (Content "xxx")
 
 case_content_newlineTerminated :: Assertion
 case_content_newlineTerminated =
-    runParser content "case_content_newlineTerminated" "xxx\nyyy" @=? Right (Content "xxx")
+    runParser content "case_content_newlineTerminated" "xxx\nyyy" @?= Right (Content "xxx")
 
 case_content_reservedTerminated :: Assertion
 case_content_reservedTerminated =
