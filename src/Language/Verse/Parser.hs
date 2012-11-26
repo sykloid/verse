@@ -10,6 +10,7 @@ module Language.Verse.Parser (
 
     inline,
     content,
+    transform
 ) where
 
 import Control.Applicative
