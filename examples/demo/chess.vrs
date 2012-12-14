@@ -1,0 +1,11 @@
+One of my original motivations was to be able to generate an interactive chess widget thingy, given
+just a description of the moves.
+
+I wasn't able to make it interactive (yet), but I'll settle for board diagrams.
+
+{chess|}
+
+It's great for writing posts about chess openings. For example, consider the underappreciated
+{italics|Fried Liver Attack}.
+
+{chess|e4, e5, Nf3, Nc6, Bc4, Nf6, Ng5, d5, exd5, Nxd5, Nxf7, Kxf7}

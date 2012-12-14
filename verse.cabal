@@ -25,10 +25,17 @@ library
     exposed-modules:
         Language.Verse.AST,
         Language.Verse.Parser
+        Language.Verse.Renderer
+        Language.Verse.Renderer.Html
 
     build-depends:
         base,
+        blaze-html,
+        containers,
         mtl,
+        process,
+        split,
+        transformers,
         parsec
 
 executable verse
@@ -42,8 +49,13 @@ executable verse
 
     build-depends:
         base,
+        blaze-html,
+        containers,
         parsec,
         mtl,
+        process,
+        split,
+        transformers,
         verse
 
 test-suite all

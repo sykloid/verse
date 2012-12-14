@@ -1,0 +1,6 @@
+<!DOCTYPE HTML>
+<html><head></head><body><p>One of my original motivations was to be able to generate an interactive chess widget thingy, given just a description of the moves.</p><p>I wasn&#39;t able to make it interactive (yet), but I&#39;ll settle for board diagrams.</p><p><script src="chessboard.js"></script><script>function play0() {game = Chessboard.newGame();
+
+game.draw("board0");} window.addEventListener('load', play0, false);</script><canvas id="board0"></canvas></p><p>It&#39;s great for writing posts about chess openings. For example, consider the underappreciated<em>Fried Liver Attack</em>.</p><p><script>function play1() {game = Chessboard.newGame();
+game.move("e4, e5, Nf3, Nc6, Bc4, Nf6, Ng5, d5, exd5, Nxd5, Nxf7, Kxf7");
+game.draw("board1");} window.addEventListener('load', play1, false);</script><canvas id="board1"></canvas></p></body></html>

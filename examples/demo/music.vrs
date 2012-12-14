@@ -1,0 +1,7 @@
+Everyone's been doing something to do with music all semester, and I thought I'd jump on the
+bandwagon too. Here are a few choice notes, and a rest.
+
+{music|c 4 q e 4 h g 4 w b 4 qr}
+
+I was considering wiring it to an HTML5 audio element, but as bad as csound is, javascript + midi is
+worse.

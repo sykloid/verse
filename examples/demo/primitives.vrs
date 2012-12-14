@@ -1,0 +1,11 @@
+At it's core, Verse distinguishes between two types of text -- text which isn't marked up, and text
+which is.
+
+Marked up text is associated with the name of a transformation to be applied. These transformations
+can range from being extremely simple text substitutions, to something far more complex.
+
+At the simpler end of things, we have the basic HTML transformations, like {bold|bold text}, as well
+as {italics|italicized text}. These are rendered almost through simple text substitution, so they
+aren't that difficult to write.
+
+But at the {bold|end} of the {italics|day}, there's only {italics|so much} you can do with {bold|just} these.

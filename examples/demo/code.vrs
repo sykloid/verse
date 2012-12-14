@@ -1,0 +1,11 @@
+Since the renderer is stacked on top of IO, you can technically do anything you want. For example,
+you can call out to an arbitrary command and ask it to do some rendering for you.
+
+One such task I've done many times, is to ask {italics|Pygments} to do syntax highlighting for me.
+With just a few lines of code, I can now insert type signatures like:
+
+{code|haskell:map :: (a -> b) -> [a] -> [b]}
+
+You can also do other languages, like:
+
+{code|cpp:void swap(int& x, int& y);}

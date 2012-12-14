@@ -1,0 +1,11 @@
+<!DOCTYPE HTML>
+<html><head></head><body><p>Everyone&#39;s been doing something to do with music all semester, and I thought I&#39;d jump on the bandwagon too. Here are a few choice notes, and a rest.</p><p><script src="vexflow.js"></script><script src="jquery.js"></script><canvas width="600" height="200"></canvas><script>var canvas = $("canvas")[0];
+var renderer = new Vex.Flow.Renderer(canvas, Vex.Flow.Renderer.Backends.CANVAS);
+var ctx = renderer.getContext();
+var stave = new Vex.Flow.Stave(10, 0, 500);
+stave.addClef("treble").setContext(ctx).draw();
+var notes = [new Vex.Flow.StaveNote({ keys: ["c/4"], duration: "q" }), new Vex.Flow.StaveNote({ keys: ["e/4"], duration: "h" }), new Vex.Flow.StaveNote({ keys: ["g/4"], duration: "w" }), new Vex.Flow.StaveNote({ keys: ["b/4"], duration: "qr" })];var voice = new Vex.Flow.Voice({ num_beats: 8, beat_value: 4, resolution: Vex.Flow.RESOLUTION });
+voice.addTickables(notes);
+var formatter = new Vex.Flow.Formatter().joinVoices([voice]).format([voice], 500);
+voice.draw(ctx, stave);
+</script></p><p>I was considering wiring it to an HTML5 audio element, but as bad as csound is, javascript + midi is worse.</p></body></html>
